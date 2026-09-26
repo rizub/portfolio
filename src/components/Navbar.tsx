@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { portfolioData } from '../data/portfolioData';
 
@@ -64,16 +64,6 @@ export const Navbar: React.FC = () => {
           {/* Actions & Social CTAs */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="/Ubai_CV_Lead_Platform_Engineer.pdf"
-              download="Ubai_CV_Lead_Platform_Engineer.pdf"
-              className="px-3 py-2 rounded-lg bg-slate-900/90 border border-slate-700/80 hover:border-purple-500/50 hover:bg-slate-800 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm"
-              title="Download Redesigned Engineering CV (PDF)"
-            >
-              <Download className="w-3.5 h-3.5 text-purple-400" />
-              <span>Download CV</span>
-            </a>
-
-            <a
               href={portfolioData.profile.github}
               target="_blank"
               rel="noopener noreferrer"
@@ -100,14 +90,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center gap-2">
-            <a
-              href="/Ubai_CV_Lead_Platform_Engineer.pdf"
-              download="Ubai_CV_Lead_Platform_Engineer.pdf"
-              className="px-2.5 py-1.5 rounded-lg bg-purple-600/20 border border-purple-500/40 text-purple-300 text-xs font-medium flex items-center gap-1"
-            >
-              <Download className="w-3 h-3" /> CV
-            </a>
+          <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"
@@ -132,13 +115,6 @@ export const Navbar: React.FC = () => {
                 {link.name}
               </a>
             ))}
-            <a
-              href="/Ubai_CV_Lead_Platform_Engineer.pdf"
-              download="Ubai_CV_Lead_Platform_Engineer.pdf"
-              className="w-full text-center py-2.5 text-xs font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg flex items-center justify-center gap-1.5 shadow-sm mt-1"
-            >
-              <Download className="w-3.5 h-3.5" /> Download Full Engineering CV (PDF)
-            </a>
             <div className="flex gap-2 pt-2 border-t border-slate-800">
               <a
                 href={portfolioData.profile.github}
