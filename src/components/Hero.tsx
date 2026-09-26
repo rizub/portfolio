@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, ArrowRight, Layers } from 'lucide-react';
+import { Terminal, ArrowRight, Layers, Download } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export const Hero: React.FC = () => {
@@ -63,6 +63,15 @@ export const Hero: React.FC = () => {
             >
               <span>Explore Enterprise Case Studies</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
+
+            <a
+              href="/Ubai_CV_Lead_Platform_Engineer.pdf"
+              download="Ubai_CV_Lead_Platform_Engineer.pdf"
+              className="px-5 py-3 rounded-xl bg-purple-950/40 border border-purple-500/40 hover:bg-purple-900/30 text-purple-200 font-semibold text-sm transition-all flex items-center gap-2 group shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Download className="w-4 h-4 text-purple-400 group-hover:translate-y-0.5 transition-transform" />
+              <span>Download CV (PDF)</span>
             </a>
 
             <a

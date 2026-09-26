@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check } from 'lucide-react';
+import { Mail, Copy, Check, Download } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { portfolioData } from '../data/portfolioData';
 
@@ -40,6 +40,15 @@ export const ContactFooter: React.FC = () => {
             >
               <Mail className="w-4 h-4" />
               <span>Send Email</span>
+            </a>
+
+            <a
+              href="/Ubai_CV_Lead_Platform_Engineer.pdf"
+              download="Ubai_CV_Lead_Platform_Engineer.pdf"
+              className="px-5 py-3 rounded-xl bg-purple-950/40 border border-purple-500/40 hover:bg-purple-900/30 text-purple-200 text-sm font-semibold flex items-center gap-2 transition-all shadow-sm"
+            >
+              <Download className="w-4 h-4 text-purple-400" />
+              <span>Download CV (PDF)</span>
             </a>
 
             <button

@@ -39,11 +39,33 @@ export const InteractiveTerminal: React.FC = () => {
             "  k3s cluster-status  - View distributed 3-node cluster & runner fleet",
             "  po-pipeline --test  - Simulate live purchase order OCR & Lark Base sync",
             "  tech-stack --summary- Display primary architectural philosophy",
+            "  cv / download-cv    - Download official executive engineering CV (PDF)",
             "  whoami              - Display active developer profile & background",
             "  clear               - Clear terminal screen"
           ]
         }
       ]);
+      setInputVal('');
+      return;
+    }
+
+    if (trimmed === 'cv' || trimmed === 'download-cv') {
+      setHistory(prev => [
+        ...prev,
+        {
+          command: cmdStr,
+          output: [
+            "[+] Official CV: Ubai_CV_Lead_Platform_Engineer.pdf",
+            "[+] Target Role: Lead Platform & Systems Integration Engineer | Cloud Architect",
+            "[+] Direct Link: https://ubai.kreatekode.tech/Ubai_CV_Lead_Platform_Engineer.pdf",
+            ">> Triggering instant download..."
+          ]
+        }
+      ]);
+      const link = document.createElement('a');
+      link.href = '/Ubai_CV_Lead_Platform_Engineer.pdf';
+      link.download = 'Ubai_CV_Lead_Platform_Engineer.pdf';
+      link.click();
       setInputVal('');
       return;
     }
@@ -137,8 +159,15 @@ export const InteractiveTerminal: React.FC = () => {
             </button>
           ))}
           <button
+            onClick={() => executeCommand('cv')}
+            className="px-3 py-1.5 rounded-lg bg-purple-950/40 border border-purple-500/40 hover:bg-purple-900/40 text-xs font-mono text-purple-200 transition-all flex items-center gap-1"
+          >
+            <Play className="w-3 h-3 text-purple-400 fill-purple-400/20" />
+            <span>download-cv</span>
+          </button>
+          <button
             onClick={() => executeCommand('clear')}
-            className="px-3 py-1.5 rounded-lg bg-slate-900/60 border border-slate-850 hover:bg-slate-800 text-xs font-mono text-slate-400 transition-all flex items-center gap-1"
+            className="px-3 py-1.5 rounded-lg bg-slate-900/60 border border-slate-800 hover:bg-slate-800 text-xs font-mono text-slate-400 transition-all flex items-center gap-1"
           >
             <RotateCcw className="w-3 h-3" />
             <span>clear</span>
@@ -174,7 +203,7 @@ export const InteractiveTerminal: React.FC = () => {
             {/* Initial Welcome message */}
             <div className="text-slate-500 leading-relaxed">
               # Connected to Virtuenet K3s Control-Plane via Tailscale Mesh.<br />
-              # Type '<span className="text-cyan-400">help</span>' or select preset commands above to test live simulations.
+              # Type '<span className="text-cyan-400">help</span>' or '<span className="text-purple-300">download-cv</span>' to test live simulations.
             </div>
 
             {/* Execution History */}
@@ -215,7 +244,7 @@ export const InteractiveTerminal: React.FC = () => {
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="type a command or 'help' and press Enter..."
+                placeholder="type a command, 'help' or 'download-cv' and press Enter..."
                 className="w-full bg-transparent text-white focus:outline-none placeholder:text-slate-600 font-mono text-xs sm:text-sm"
                 autoFocus
               />
